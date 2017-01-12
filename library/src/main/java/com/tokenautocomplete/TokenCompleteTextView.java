@@ -478,6 +478,18 @@ public abstract class TokenCompleteTextView<T> extends MultiAutoCompleteTextView
         editable.delete(start, end);
     }
 
+    /**
+     * Set the completion text only.
+     */
+    @SuppressWarnings("unused")
+    public void replaceCompletionText(CharSequence text) {
+        Editable editable = getText();
+        int end = getCorrectedTokenEnd();
+        int start = getCorrectedTokenBeginning(end);
+
+        editable.replace(text, start, end);
+    }
+
     @Override
     public void onInitializeAccessibilityEvent(AccessibilityEvent event) {
         super.onInitializeAccessibilityEvent(event);
